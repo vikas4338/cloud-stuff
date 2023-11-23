@@ -19,3 +19,5 @@ resource "aws_s3_bucket" "testing_bucket" {
   bucket = random_pet.testing_bucket.id
   force_destroy = true
 }
+
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/24056e33-f2a0-43a9-833e-3f6fbb1c4b54)
