@@ -1,4 +1,21 @@
-## highly-available-applocation
-terraform Init
-terraform plan -var db_table_name="state.lock" -var hash_key="LockID" -var s3_bucket_name="bucket-for-iac-vk"
-terraform apply -var db_table_name="state.lock" -var hash_key="LockID" -var s3_bucket_name="bucket-for-iac-vk" --auto-approve
+## Apigateway lambda integration
+terraform plan -var environment="dev" -var region="us-east-1" --auto-approve
+terraform apply -var environment="dev" -var region="us-east-1" --auto-approve  
+
+## Run the application
+Once apply is done, copy the apigateway url. 
+### Get call 
+GET https://zrgoi9t8cd.execute-api.us-east-1.amazonaws.com/dev/hello?Name=AWS Stuff
+
+## POST call to interact with s3 bucket
+https://zrgoi9t8cd.execute-api.us-east-1.amazonaws.com/dev/getS3Objects
+### Payload
+{
+    "bucketName":"test-firm-flamingo"
+}
+
+ Testing bucket name created by below snippet in "s3-bucket-for-testing.tf" file
+resource "aws_s3_bucket" "testing_bucket" {
+  bucket = random_pet.testing_bucket.id
+  force_destroy = true
+}
