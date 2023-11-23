@@ -17,9 +17,34 @@ resource "aws_iam_role" "hello_lambda_exec" {
 POLICY
 }
 
+resource "aws_iam_policy" "s3_getObjects_policy" {
+  name        = "S3-GetObjects-Policy"
+  description = "This policy allow access to getObjects action"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Effect": "Allow",
+      "Resource": ["${aws_s3_bucket.testing_bucket.arn}"]
+    }
+  ]
+}
+EOF
+}
+
 resource "aws_iam_role_policy_attachment" "hello_lambda_policy" {
   role       = aws_iam_role.hello_lambda_exec.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" 
+}
+
+resource "aws_iam_role_policy_attachment" "hello_lambda_policy_custom" {
+  role       = aws_iam_role.hello_lambda_exec.name
+  policy_arn = aws_iam_policy.s3_getObjects_policy.arn
 }
 
 resource "aws_lambda_function" "hello" {
