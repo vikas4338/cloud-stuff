@@ -14,94 +14,94 @@ This project creates a serverless application using terraform. Here are the main
    ```
 - Create s3 bucket to store zip file, which will contains lambda code
    ```terraform
-  resource "random_pet" "lambda_bucket_name" {
-    prefix = "lambda"
-    length = 2
-  }
+   resource "random_pet" "lambda_bucket_name" {
+     prefix = "lambda"
+     length = 2
+   }
 
-resource "aws_s3_bucket" "lambda_bucket" {
-   bucket        = random_pet.lambda_bucket_name.id
-   force_destroy = true
-}
+  resource "aws_s3_bucket" "lambda_bucket" {
+     bucket        = random_pet.lambda_bucket_name.id
+     force_destroy = true
+  }
    ```
 - Create an zip file of lambda code with code dependencies (using hashicorp/archive)
 
 ```terraform
-data "archive_file" "lambda_hello" {
-  type = "zip"
-
-  source_dir  = "./${path.module}/hello"
-  output_path = "./${path.module}/hello.zip"
-}
-```
-- Creats s3 object resource and copy zip file to s3 bucket
-
- ```terraform
- resource "aws_s3_object" "lambda_hello" {
-  bucket = aws_s3_bucket.lambda_bucket.id
-
-  key    = "hello.zip"
-  source = data.archive_file.lambda_hello.output_path
-
-  etag = filemd5(data.archive_file.lambda_hello.output_path)
-}
- ```
-- Create iam role which lambda function will assume
-  ```terraform
- resource "aws_iam_role" "hello_lambda_exec" {
-  name = "hello-lambda"
-
-  assume_role_policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-POLICY
-}
+  data "archive_file" "lambda_hello" {
+    type = "zip"
+  
+    source_dir  = "./${path.module}/hello"
+    output_path = "./${path.module}/hello.zip"
+  }
   ```
+  - Creats s3 object resource and copy zip file to s3 bucket
+  
+   ```terraform
+   resource "aws_s3_object" "lambda_hello" {
+    bucket = aws_s3_bucket.lambda_bucket.id
+  
+    key    = "hello.zip"
+    source = data.archive_file.lambda_hello.output_path
+  
+    etag = filemd5(data.archive_file.lambda_hello.output_path)
+  }
+   ```
+  - Create iam role which lambda function will assume
+    ```terraform
+   resource "aws_iam_role" "hello_lambda_exec" {
+    name = "hello-lambda"
+  
+    assume_role_policy = <<POLICY
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "lambda.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+      }
+    ]
+  }
+  POLICY
+  }
+    ```
 
 - Attach required policies (s3 ListObjects and AWSLambdaBasicExecutionRole) to the role
 ```terraform
-resource "aws_iam_policy" "s3_getObjects_policy" {
-  name        = "S3-GetObjects-Policy"
-  description = "This policy allow access to getObjects action"
-
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "s3:ListBucket"
-      ],
-      "Effect": "Allow",
-      "Resource": ["${aws_s3_bucket.testing_bucket.arn}"]
-    }
-  ]
-}
-EOF
-}
-
-resource "aws_iam_role_policy_attachment" "hello_lambda_policy" {
-  role       = aws_iam_role.hello_lambda_exec.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" 
-}
-
-
-resource "aws_iam_role_policy_attachment" "hello_lambda_policy_custom" {
-  role       = aws_iam_role.hello_lambda_exec.name
-  policy_arn = aws_iam_policy.s3_getObjects_policy.arn
-}
-
-```
+  resource "aws_iam_policy" "s3_getObjects_policy" {
+    name        = "S3-GetObjects-Policy"
+    description = "This policy allow access to getObjects action"
+  
+    policy = <<EOF
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "s3:ListBucket"
+        ],
+        "Effect": "Allow",
+        "Resource": ["${aws_s3_bucket.testing_bucket.arn}"]
+      }
+    ]
+  }
+  EOF
+  }
+  
+  resource "aws_iam_role_policy_attachment" "hello_lambda_policy" {
+    role       = aws_iam_role.hello_lambda_exec.name
+    policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" 
+  }
+  
+  
+  resource "aws_iam_role_policy_attachment" "hello_lambda_policy_custom" {
+    role       = aws_iam_role.hello_lambda_exec.name
+    policy_arn = aws_iam_policy.s3_getObjects_policy.arn
+  }
+  
+  ```
 
  - Create API gateway and integrate lambda function 
 terraform plan -var environment="dev" -var region="us-east-1" --auto-approve
