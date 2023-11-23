@@ -102,7 +102,88 @@ This project creates a serverless application using terraform. Here are the main
   
   ```
 
- - Create API gateway and integrate lambda function 
+ - Create API gateway and integrate lambda function
+   ```terraform
+   resource "aws_apigatewayv2_api" "main" {
+     name = "hello-world"
+     protocol_type = "HTTP"
+   }
+   ```
+ - Create apigateway stage 
+   ```terraform
+   resource "aws_apigatewayv2_stage" "dev" {
+   api_id = aws_apigatewayv2_api.main.id
+ 
+   name = var.environment
+   auto_deploy = true
+ 
+   access_log_settings {
+      destination_arn = aws_cloudwatch_log_group.hello.arn
+  
+      format = jsonencode({
+        requestId               = "$context.requestId"
+        sourceIp                = "$context.identity.sourceIp"
+        requestTime             = "$context.requestTime"
+        protocol                = "$context.protocol"
+        httpMethod              = "$context.httpMethod"
+        resourcePath            = "$context.resourcePath"
+        routeKey                = "$context.routeKey"
+        status                  = "$context.status"
+        responseLength          = "$context.responseLength"
+        integrationErrorMessage = "$context.integrationErrorMessage"
+        }
+      )
+    }
+  }
+   ```
+
+- Create cloudwatch log group
+  ```terraform
+  resource "aws_cloudwatch_log_group" "api_gw" {
+    name = "/aws/api-gw/${aws_apigatewayv2_api.main.name}"
+  
+    retention_in_days = 14
+  }
+  ```
+
+- Integrate lambda function with apigateway
+
+  ```terraform
+  resource "aws_apigatewayv2_integration" "helloworld_integration" { 
+      api_id = aws_apigatewayv2_api.main.id
+      integration_uri = aws_lambda_function.hello.invoke_arn
+      integration_type = "AWS_PROXY"
+      integration_method = "POST"
+  }
+```
+- Create API Gateway routes (Get route to return the hello world message and POST route to return S3 Objects metadata)
+  ```terraform
+  resource "aws_apigatewayv2_route" "get_hello" {
+      api_id = aws_apigatewayv2_api.main.id
+      route_key = "GET /hello"
+      target = "integrations/${aws_apigatewayv2_integration.helloworld_integration.id}" 
+  }
+  
+  resource "aws_apigatewayv2_route" "post_getObjectList" {
+      api_id = aws_apigatewayv2_api.main.id
+      route_key = "POST /getS3Objects"
+      target = "integrations/${aws_apigatewayv2_integration.helloworld_integration.id}" 
+  }
+  ```
+-- Provide lambda function permission to invoke lambda function 
+   resource "aws_lambda_permission" "api_gw" {
+     action        = "lambda:InvokeFunction"
+     function_name = aws_lambda_function.hello.function_name
+     principal     = "apigateway.amazonaws.com"
+   
+     source_arn = "${aws_apigatewayv2_api.main.execution_arn}/*/*"
+   }
+
+### Output the apigateway url to invoke 
+output "hello_base_url" {
+  value = aws_apigatewayv2_stage.dev.invoke_url
+}
+
 terraform plan -var environment="dev" -var region="us-east-1" --auto-approve
 terraform apply -var environment="dev" -var region="us-east-1" --auto-approve  
 
