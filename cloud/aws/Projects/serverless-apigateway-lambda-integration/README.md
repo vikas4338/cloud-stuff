@@ -184,7 +184,10 @@ output "hello_base_url" {
   value = aws_apigatewayv2_stage.dev.invoke_url
 }
 
+### Create and review the plan (Pass required parameters - environment and region)
 terraform plan -var environment="dev" -var region="us-east-1" --auto-approve
+
+### Apply the changes (Pass required parameters - environment and region)
 terraform apply -var environment="dev" -var region="us-east-1" --auto-approve  
 
 ## Run the application
