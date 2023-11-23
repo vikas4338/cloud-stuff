@@ -50,22 +50,21 @@ This project creates a serverless application using terraform. Here are the main
     ```terraform
    resource "aws_iam_role" "hello_lambda_exec" {
     name = "hello-lambda"
-  
     assume_role_policy = <<POLICY
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Principal": {
-          "Service": "lambda.amazonaws.com"
-        },
-        "Action": "sts:AssumeRole"
-      }
-    ]
-  }
-  POLICY
-  }
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Service": "lambda.amazonaws.com"
+          },
+          "Action": "sts:AssumeRole"
+        }
+      ]
+    }
+    POLICY
+    }
     ```
 
 - Attach required policies (s3 ListObjects and AWSLambdaBasicExecutionRole) to the role
