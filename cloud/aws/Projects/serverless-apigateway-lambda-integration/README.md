@@ -1,4 +1,17 @@
 ## Apigateway lambda integration
+This project creates a serverless application using terraform. Here are the main components. 
+ - Create Lambda function (hello/function.js) and related terraform code in lambda-helper.tf.
+   # resource "aws_lambda_function" "hello" {
+      function_name = "hello"
+      s3_bucket = aws_s3_bucket.lambda_bucket.id
+      s3_key    = aws_s3_object.lambda_hello.key
+      runtime = "nodejs16.x"
+      handler = "function.handler"
+      source_code_hash = data.archive_file.lambda_hello.output_base64sha256 
+      role = aws_iam_role.hello_lambda_exec.arn
+   # }
+   
+ - Create API gateway and integrate lambda function 
 terraform plan -var environment="dev" -var region="us-east-1" --auto-approve
 terraform apply -var environment="dev" -var region="us-east-1" --auto-approve  
 
