@@ -209,3 +209,16 @@ resource "aws_s3_bucket" "testing_bucket" {
 }
 
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/24056e33-f2a0-43a9-833e-3f6fbb1c4b54)
+
+
+### DynamoDb 
+
+- Payload for posting pet information
+  {
+    "httpMethod": "POST",
+    "body": {
+      "PetId": "0001",
+      "PetName": "Name",
+      "Birthdate": "2023-11-11"
+    }
+  }
