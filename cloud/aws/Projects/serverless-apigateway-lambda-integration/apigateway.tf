@@ -1,5 +1,5 @@
 resource "aws_apigatewayv2_api" "main" {
-  name = "hello-world"
+  name = "serverless-app"
   protocol_type = "HTTP"
 }
 
@@ -10,7 +10,7 @@ resource "aws_apigatewayv2_stage" "dev" {
   auto_deploy = true
 
   access_log_settings {
-    destination_arn = aws_cloudwatch_log_group.hello.arn
+    destination_arn = aws_cloudwatch_log_group.api_gw.arn
 
     format = jsonencode({
       requestId               = "$context.requestId"
