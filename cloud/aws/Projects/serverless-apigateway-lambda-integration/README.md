@@ -1,5 +1,7 @@
 ## Apigateway lambda integration
-This project creates a serverless application using terraform. Here are the main components. 
+This project creates a serverless application using terraform. Here are the main components. We are using terraform to create AWS resources since its very powerful and support multiple cloud providers. 
+
+
  - Create Lambda function (hello/function.js) and related terraform code in lambda-helper.tf.
    ```terraform
    resource "aws_lambda_function" "hello" {
@@ -388,3 +390,5 @@ Create routes for petstore
 
     ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/e846466e-cfed-4a9c-96f3-bd5c05fd9c3d)
 
+### Cleanup 
+terraform destroy -var environment="dev" -var region="us-east-1" --auto-approve
