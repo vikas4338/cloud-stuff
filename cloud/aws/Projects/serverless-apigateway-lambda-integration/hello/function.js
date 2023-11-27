@@ -18,7 +18,7 @@ exports.handler = async (event) => {
             responseMessage = await s3.listObjects(params).promise();
         } catch (err) {
             console.log(err);
-            const message = `Error getting objects from bucket ${event.body.body.bucketName}.`;
+            const message = `Error getting objects from bucket ${reqBody.bucketName}.`;
             console.log(message);
             throw new Error(message);
         }
