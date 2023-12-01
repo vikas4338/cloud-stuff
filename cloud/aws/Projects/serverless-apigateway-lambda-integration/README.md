@@ -228,19 +228,19 @@ DynamoDb is a serverless no sql service which is widely used. Lets learn how to 
     billing_mode   = "PROVISIONED"
     read_capacity  = 20
     write_capacity = 20
-    hash_key       = "PetId"
-    range_key      = "Birthdate"
+    hash_key       = "Id"
+    range_key      = "Breed"
   
     attribute {
-      name = "PetId"
-      type = "S"
+      name = "Id"
+      type = "N"
     }
-    
+  
     attribute {
-      name = "Birthdate"
+      name = "Breed"
       type = "S"
     }
-  }
+}
   ```
 Integrate PetStore Lambda function to the same api gateway
 ```terraform
@@ -256,16 +256,32 @@ Create routes for petstore
  
  ```terraform
   resource "aws_apigatewayv2_route" "get_pets" {
-     api_id = aws_apigatewayv2_api.main.id
-     route_key = "GET /pets"
-     target = "integrations/${aws_apigatewayv2_integration.petStore_integration.id}" 
+    api_id = aws_apigatewayv2_api.main.id
+    route_key = "GET /pets"
+    target = "integrations/${aws_apigatewayv2_integration.petStore_integration.id}" 
   }
+  ```
+- GET -> Gets a single pet by id and breed
+ ```terraform
+  resource "aws_apigatewayv2_route" "get_pet_by_id" {
+    api_id = aws_apigatewayv2_api.main.id
+    route_key = "GET /pets/id"
+    target = "integrations/${aws_apigatewayv2_integration.petStore_integration.id}" 
+}
   ```
 - POST -> Save/Update pet information to the table
   ```terraform
-  resource "aws_apigatewayv2_route" "post_pets" {
+  resource "aws_apigatewayv2_route" "add_or_update_pet_info" {
     api_id = aws_apigatewayv2_api.main.id
     route_key = "POST /pets"
+    target = "integrations/${aws_apigatewayv2_integration.petStore_integration.id}" 
+}
+
+- DELETE -> Deletes pet information to the table
+  ```terraform
+  resource "aws_apigatewayv2_route" "delete_pet_by_id" {
+    api_id = aws_apigatewayv2_api.main.id
+    route_key = "DELETE /pets"
     target = "integrations/${aws_apigatewayv2_integration.petStore_integration.id}" 
   }
   ```
@@ -347,14 +363,14 @@ Create routes for petstore
   EOF
   }
 
-  resource "aws_iam_role_policy_attachment" "petStore_lambda_policy" {
-    role       = aws_iam_role.petStore_lambda_exec.name
-    policy_arn = aws_iam_policy.dynamodb_policy.arn 
-  }
-  
-  resource "aws_iam_role_policy_attachment" "petStore_lambda_policy_basic" {
-    role       = aws_iam_role.petStore_lambda_exec.name
+  resource "aws_iam_role_policy_attachment" "hello_lambda_policy" {
+    role       = aws_iam_role.hello_lambda_exec.name
     policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" 
+  }
+
+  resource "aws_iam_role_policy_attachment" "hello_lambda_policy_custom" {
+    role       = aws_iam_role.hello_lambda_exec.name
+    policy_arn = aws_iam_policy.s3_getObjects_policy.arn
   }
   ```
   - Provide apigateway permissions to invoke this lambda function 
@@ -375,20 +391,21 @@ Create routes for petstore
   }
   ```
 
-  - POST call for saving pets information - https://h05od4ar8f.execute-api.us-east-1.amazonaws.com/dev/pets
+  - POST call for saving pets information - https://7okx6mgi0j.execute-api.us-east-1.amazonaws.com/dev**/pets**
   ```json
-  Payload 
-    {
-       {
-         "petId": "1",
-         "petName": "Pikooo",
-         "birthdate": "2023-11-12"
-       } 
-    }
-  ```
-  - GET https://h05od4ar8f.execute-api.us-east-1.amazonaws.com/dev/pets
+   Payload 
+   {
+     "id": "112",
+     "breed": "German Sheford",
+     "age": "19",
+     "admissionDate": "2022-11-11"
+   }
 
-    ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/e846466e-cfed-4a9c-96f3-bd5c05fd9c3d)
+  ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/a8bdd093-5ce8-4e24-a617-dd7047bbf280)
+  
+  ```
+  - GET [https://h05od4ar8f.execute-api.us-east-1.amazonaws.com/dev/pets](https://7okx6mgi0j.execute-api.us-east-1.amazonaws.com/dev/pets?id=112&breed=German Sheford)
+   ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/3b50b68e-fdf5-4a52-8ac1-616d17b4a18f)
 
 ### Cleanup 
 terraform destroy -var environment="dev" -var region="us-east-1" --auto-approve
