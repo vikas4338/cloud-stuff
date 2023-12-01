@@ -391,7 +391,7 @@ Create routes for petstore
   }
   ```
 
-  - POST call for saving pets information - https://7okx6mgi0j.execute-api.us-east-1.amazonaws.com/dev**/pets**
+  - POST call for saving pets information - https://7okx6mgi0j.execute-api.us-east-1.amazonaws.com/dev/pets
   ```json
    Payload 
    {
