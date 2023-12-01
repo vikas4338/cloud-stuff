@@ -3,16 +3,16 @@ resource "aws_dynamodb_table" "pets_store" {
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
-  hash_key       = "PetId"
-  range_key      = "Birthdate"
+  hash_key       = "Id"
+  range_key      = "Breed"
 
   attribute {
-    name = "PetId"
-    type = "S"
+    name = "Id"
+    type = "N"
   }
 
   attribute {
-    name = "Birthdate"
+    name = "Breed"
     type = "S"
   }
 }
