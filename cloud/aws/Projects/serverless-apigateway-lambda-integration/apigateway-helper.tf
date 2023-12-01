@@ -24,15 +24,28 @@ resource "aws_apigatewayv2_route" "post_getObjectList" {
     target = "integrations/${aws_apigatewayv2_integration.helloworld_integration.id}" 
 }
 
+// PetStore related routes
 resource "aws_apigatewayv2_route" "get_pets" {
     api_id = aws_apigatewayv2_api.main.id
     route_key = "GET /pets"
     target = "integrations/${aws_apigatewayv2_integration.petStore_integration.id}" 
 }
 
-resource "aws_apigatewayv2_route" "post_pets" {
+resource "aws_apigatewayv2_route" "get_pet_by_id" {
+    api_id = aws_apigatewayv2_api.main.id
+    route_key = "GET /pets/id"
+    target = "integrations/${aws_apigatewayv2_integration.petStore_integration.id}" 
+}
+
+resource "aws_apigatewayv2_route" "add_or_update_pet_info" {
     api_id = aws_apigatewayv2_api.main.id
     route_key = "POST /pets"
+    target = "integrations/${aws_apigatewayv2_integration.petStore_integration.id}" 
+}
+
+resource "aws_apigatewayv2_route" "delete_pet_by_id" {
+    api_id = aws_apigatewayv2_api.main.id
+    route_key = "DELETE /pets"
     target = "integrations/${aws_apigatewayv2_integration.petStore_integration.id}" 
 }
 
