@@ -400,10 +400,9 @@ Create routes for petstore
      "age": "19",
      "admissionDate": "2022-11-11"
    }
-
+  ```
   ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/a8bdd093-5ce8-4e24-a617-dd7047bbf280)
   
-  ```
   - GET [https://h05od4ar8f.execute-api.us-east-1.amazonaws.com/dev/pets](https://7okx6mgi0j.execute-api.us-east-1.amazonaws.com/dev/pets?id=112&breed=German Sheford)
    ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/3b50b68e-fdf5-4a52-8ac1-616d17b4a18f)
 
