@@ -1,0 +1,153 @@
+<mxfile host="app.diagrams.net" modified="2023-12-07T04:40:59.495Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="bQ_yywxPMDcv7-HC79jl" version="22.1.7" type="device">
+  <diagram name="Page-1" id="deHnhuGsW8FWt7YjsNbV">
+    <mxGraphModel dx="1502" dy="591" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="rak335SbRk0G0OUnhCWc-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="330" y="60" width="980" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-2" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Cloud&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="310" y="30" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-3" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#666666;dashed=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;" vertex="1" parent="1">
+          <mxGeometry x="360" y="87.5" width="930" height="532.5" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-5" value="&lt;b&gt;Region&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="60" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-6" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/user_accounts.svg;" vertex="1" parent="1">
+          <mxGeometry x="352" y="236.4" width="50" height="48.5" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-8" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;S3 Bucket&lt;/font&gt;&lt;/b&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.bucket_with_objects;" vertex="1" parent="1">
+          <mxGeometry x="490" y="227.65" width="45" height="57.2" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-9" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;SNS Topic&lt;/font&gt;&lt;/b&gt;" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;" vertex="1" parent="1">
+          <mxGeometry x="655" y="225.9" width="58" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-11" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;" vertex="1" parent="1">
+          <mxGeometry x="890" y="215.65" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-12" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;" vertex="1" parent="1">
+          <mxGeometry x="890" y="110" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-13" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;" vertex="1" parent="1">
+          <mxGeometry x="890" y="320" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="526" y="266" as="sourcePoint" />
+            <mxPoint x="656" y="266" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="616" y="266" />
+              <mxPoint x="616" y="266" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.629;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="rak335SbRk0G0OUnhCWc-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="713" y="264.75" as="sourcePoint" />
+            <mxPoint x="843" y="264.75" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-24" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="790" y="140" as="sourcePoint" />
+            <mxPoint x="780" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="140" as="sourcePoint" />
+            <mxPoint x="890" y="140" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="880" y="140" />
+              <mxPoint x="880" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="780" y="370" as="sourcePoint" />
+            <mxPoint x="890" y="370" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="880" y="370" />
+              <mxPoint x="880" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-28" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;SQS Queues&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="830" y="420" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="966" y="145" as="sourcePoint" />
+            <mxPoint x="1066" y="145" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1056" y="145" />
+              <mxPoint x="1056" y="145" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="969" y="364" as="sourcePoint" />
+            <mxPoint x="1069" y="364" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1059" y="364" />
+              <mxPoint x="1059" y="364" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="967" y="260" as="sourcePoint" />
+            <mxPoint x="1067" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1057" y="260" />
+              <mxPoint x="1057" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-32" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.lambda_function;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="125" width="45" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-33" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.lambda_function;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="238.9" width="45" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-34" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.lambda_function;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="336.5" width="45" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-35" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Lambdas&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="420" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-37" value="SNS Access Policies&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- Allow&amp;nbsp; publish from S3 bucket&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-&amp;nbsp; Allow SQS to subscribe to SNS" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+          <mxGeometry x="560" y="314" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-38" value="SQS Access Policies&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- Allow&amp;nbsp; publish from S3 bucket&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;-&amp;nbsp; Allow SQS to subscribe to SNS" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+          <mxGeometry x="780" y="450" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-41" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#DD344C;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.role;" vertex="1" parent="1">
+          <mxGeometry x="1054" y="460" width="88.63" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-42" value="Policies attched to Lambda Role -&amp;nbsp;&lt;br&gt;Access CloudWatch logs&lt;br&gt;Pull messages from SQS Queue" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="510" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="265" as="sourcePoint" />
+            <mxPoint x="495" y="265" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="455" y="265" />
+              <mxPoint x="455" y="265" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rak335SbRk0G0OUnhCWc-49" value="&lt;br&gt;Subscription fillters to route different messages to different targets.&lt;br&gt;&lt;br&gt;{ &quot;Records&quot;: { &quot;eventName&quot;: [ &quot;ObjectCreated:Put&quot; ] }}" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+          <mxGeometry x="678" y="70" width="190" height="144" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
