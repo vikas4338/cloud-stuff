@@ -9,3 +9,9 @@
 *.pem
 *.key
 *.pub
+
+# Ignore zip files
+*.zip
+
+# Ignore hcl file
+*.hcl
