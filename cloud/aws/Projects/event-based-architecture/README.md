@@ -416,7 +416,6 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
   
     etag = filemd5(data.archive_file.copy_event_processor_lambda_archive.output_path)
   }
-
   ```
 
   - Create iam role for copyEvent processor lambda and attach required policies
@@ -488,7 +487,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     role       = aws_iam_role.copy_event_processor_lambda_exec.name
     policy_arn = aws_iam_policy.access_policies_for_copyEventprocessor_lambda_function.arn
   }
-```
+  ```
 
 - Add SQS as lambda trigger
   ```terraform
