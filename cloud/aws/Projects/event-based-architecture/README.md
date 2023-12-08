@@ -28,6 +28,8 @@ resource "aws_s3_bucket" "bucket_as_event_source" {
   force_destroy = true
 }
 ```
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/a4c5760b-7858-401b-8aea-fd0da4f70db9)
+
 
 - Create s3 notification and push to SNS topic (SNS topic created below)
 ```terraform
@@ -39,6 +41,10 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     events    = ["s3:ObjectCreated:*"]
   }
 }
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/2ae69210-13dd-428c-aa61-6bce550d34a8)
+
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/cf02a0fc-5218-4794-a86d-ed689262397c)
+
 ```
 
 ### Create SNS topic which receives notifications about s3 upload event
@@ -47,6 +53,8 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     name = "s3-event-notification-topic"
   }
 ```
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/254e23f7-6a66-48c1-829d-1f26296bb393)
+
 
 - Create SNS topic policy resource to allow S3 to push notification to SNS topic and allow SQS to subscribe to topic 
   ```terraform
@@ -100,6 +108,8 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     EOF
     }
   ```
+  ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/53204a7c-01bb-40f1-8086-28202e9e582c)
+
 
 - SQS (for PUT events) Subscription to the SNS topic, please note eventName ('ObjectCreated:Put') in filter policy, this filter policy helps in pushing the PUT events to the respective queue
 ```terraform
@@ -112,6 +122,10 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     raw_message_delivery = true
   }
 ```
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/a15badd4-6637-4c31-ac3e-18bbe7e341cb)
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/0a209e38-4eb9-4e5a-bfdf-8ee0472c3561)
+
+
 - SQS (for COPY events) Subscription to the SNS topic, please note eventName ('ObjectCreated:Copy') in filter policy, this filter policy helps in pushing the COPY events to the respective queue
 ```terraform
   resource "aws_sns_topic_subscription" "s3_updates_subscription_copy_events" {
@@ -123,6 +137,8 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     raw_message_delivery = true
   }
 ```
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/3d86d662-3d14-44c8-bd86-81fe1903b8e6)
+
 
 - This policy allows SNS topic to push messages to the Queue (**PUT events**) and allows lambda to read messages from the Queue. Note - We added a SQS trigger to lambda function so as soon as messages goes to 
    SQS, then lambda      read that message for processing
