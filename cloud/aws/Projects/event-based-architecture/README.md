@@ -361,6 +361,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     policy_arn = aws_iam_policy.access_policies_for_putEventprocessor_lambda_function.arn
   }
   ```
+  
   - Add SQS as lambda trigger
   ```terraform
   resource "aws_lambda_event_source_mapping" "event_source_mapping_for_put_events" {
