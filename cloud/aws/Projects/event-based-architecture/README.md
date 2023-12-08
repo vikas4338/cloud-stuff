@@ -292,6 +292,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
   ```
 
 - Create iam role for putEvent processor lambda and attach required policies (AWSLambdaBasicExecutionRole, allow interacting with queu and logs)
+  ```terraform
   resource "aws_iam_role" "put_event_processor_lambda_exec" {
     name = "putEvent-processor-lambda-exec-role"
   
