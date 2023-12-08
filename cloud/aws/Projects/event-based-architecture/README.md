@@ -547,6 +547,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/2c5c7ef9-4b1c-4106-85f3-717cb6b92d89)
 
 - See the Cloudwatch logs for information regarding event
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/8c5b938d-ffb9-4fcc-b41f-288fb29a31db)
 
 ### COPY Event - Copy Image from/to same bucket
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/a76ecd37-1633-489a-9b52-fe30d49014c1)
