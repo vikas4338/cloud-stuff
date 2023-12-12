@@ -16,14 +16,19 @@ resource "aws_s3_bucket_cors_configuration" "s3_bucket_cors_configurations" {
 
 locals {
   content_types = {
-    ".html" : "text/html",
-    ".css" : "text/css",
-    ".js" : "text/javascript"
+    htm   = "text/html"
+    html  = "text/html"
+    css   = "text/css"
+    ttf   = "font/ttf"
+    js    = "application/javascript"
+    map   = "application/javascript"
+    json  = "application/json"
+    jpg  = "jpg"
   }
 }
 
 resource "aws_s3_object" "copy_resume_content_to_s3_hosting_bucket" {
-  for_each     = fileset(path.module, "resume/**/*.{html,css,js}")
+  for_each     = fileset(path.module, "resume/**/*.{html,css,js,ttf,js,map,json,jpg}")
   bucket       = aws_s3_bucket.s3_bucket_for_hosting_resume.id
   key          = replace(trimprefix(each.value, "resume/"), "/^content//", "")
   source       = each.value
