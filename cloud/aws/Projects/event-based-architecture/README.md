@@ -1,4 +1,4 @@
-![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/4ae7f32b-32dc-49f1-8ab4-ee2155a2b041)# Event Driven Architecture
+# Event Driven Architecture
   An event-driven architecture uses events to trigger and communicate between services. In this project we have used S3, SNS, SQS and Lambda functions. Below architecture diagram shows how the different services are interacting with each other.
 
 # Architecture 
