@@ -41,11 +41,10 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     events    = ["s3:ObjectCreated:*"]
   }
 }
+```
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/2ae69210-13dd-428c-aa61-6bce550d34a8)
 
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/cf02a0fc-5218-4794-a86d-ed689262397c)
-
-```
 
 ### Create SNS topic which receives notifications about s3 upload event
 ```terraform
