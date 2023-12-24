@@ -8,7 +8,8 @@ This sample application is three tier architecture which has UI layer, backend (
 ### Create HTTP API or rest API (/Employee) and attach integration with Lambda function. 
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/8312df20-ffff-4b9f-8486-83d7506d2069)
 
-- Attaching with lambda function
+- Add routes (Get / POST / PUT / DELETE) Integrate Lambda function with API gateway
+
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/29da0ce5-4396-4949-875a-33df8eab052e)
 
 ## Lambda Function
