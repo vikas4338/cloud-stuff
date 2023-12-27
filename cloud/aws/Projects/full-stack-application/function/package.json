@@ -1,0 +1,17 @@
+{
+  "name": "hello_world",
+  "version": "1.0.0",
+  "description": "hello world sample for NodeJS",
+  "dependencies": {
+    "axios": ">=0.21.1",
+    "@aws-sdk/util-dynamodb": "~3.478.0",
+    "@aws-sdk/client-dynamodb": "~3.481.0"
+  },
+  "scripts": {
+    "test": "mocha tests/unit/"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.1.0"
+  }
+}
