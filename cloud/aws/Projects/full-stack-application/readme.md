@@ -47,14 +47,14 @@ Once we hit deploy then AWS Amplify automatically provision infra and deploy the
 
 - AWS Amplify is so powerful, the code gets deployed as we push updated changes to code commit. Lets make a minor change as below
 
-  Updated the title to **Employee Portal - Updated**
+  - Updated the title to **Employee Portal - Updated**
   ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/8e1e84d5-7bb9-4f85-a5f2-e4420f5df31b)
 
 
-  Commit the change
+  - Commit the change
   ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/47beb2b9-d6b5-4294-8f80-fa334ffd0240)
 
-  We could see the build running and getting deployed automatically. Once done we can access website to see updated text
+  - We could see the build running and getting deployed automatically. Once done we can access website to see updated text
   ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/b8419cc8-d1dc-4cf7-9c2d-a0c75f7bfe38)
 
 ************************************************
