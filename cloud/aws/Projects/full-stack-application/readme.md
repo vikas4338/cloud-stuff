@@ -4,18 +4,124 @@ This sample application is three tier architecture which has UI layer, backend (
 # Architecture Diagram
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/4f2f3421-c29f-4ed8-a3d7-a52d3f8cccde)
 
-## Create empty code commit repository
+# Backend work for website (API Gateway, Lambda and DynamoDb)
+This website would call api gateway endpoints which would be integrated with AWS lambda to process Save and get functionality so lets work on the backend stuff first.
+
+## API Gateway
+- Create HTTP API or rest API (Employee) and add routes for Get and POST and attach integration with Lambda which we are going to create in next step.
+  ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/b400e7d1-d344-4b19-8ab1-691beaa6e19f)
+
+- CORS should be configured to allow cross origin access from other domin (We just added * but we could restrict to website domain)
+  ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/839dfe1e-d53e-411f-9194-1e52cc1a2587)
+
+## Lambda Function
+- We need a lambda function which could save/retrieve data from DynamoDb. 
+
+```typescript
+   import { DynamoDBClient, ScanCommand, PutItemCommand } from "@aws-sdk/client-dynamodb"
+   import { marshall, unmarshall } from "@aws-sdk/util-dynamodb"
+  
+   export const lambdaHandler = async (event, context) => {
+      try {
+          let responseMessage = '';
+          let tablename = "EmployeeInformation"
+          const ddClient = new DynamoDBClient({ region : "us-east-1" }); 
+          
+          switch (event?.requestContext?.http?.method) {
+              case "GET":
+                  let employees = [];
+                  var params = {
+                      "TableName": tablename
+                  }
+  
+                  const { Items } = await ddClient.send(new ScanCommand(params));
+  
+                  Items.forEach(item => {
+                      employees.push(unmarshall(item));
+                  });
+                  responseMessage = employees.sort(compare);
+                  break;
+               case "POST":
+                  const requestPaylod = JSON.parse(event.body);
+                  var params = {
+                      "TableName": tablename,
+                      "Item": {
+                        'Id' : {'N': requestPaylod.Id.toString() },
+                        'Name' : {'S': requestPaylod.Name },
+                        'Age': {'N': requestPaylod.Age.toString() },
+                        'JoiningDate': {'S': new Date().toISOString() }
+                      }
+                  }
+  
+                  await ddClient.send(new PutItemCommand(params));
+                  responseMessage = "Item saved to DB"
+                  break;
+              default:
+                  console.log("Unsupported httpmethod");
+                  break;
+              }
+  
+              const response = {
+                  'statusCode': 200,
+                  'body': JSON.stringify(responseMessage)
+              }
+  
+              return response;
+          }
+          catch(error){
+              console.log(error);
+          }
+          
+          function compare( a, b ) {
+            if ( a.Id < b.Id ){
+              return -1;
+            }
+            if ( a.Id > b.Id ){
+              return 1;
+            }
+            return 0;
+      }
+   }
+```
+
+- Publish Lambda function (Make sure AWS credentials are setup on development machine and also Lambda has **permission to interact with DynamoDb**)
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/786516cf-3ee4-424d-b717-93bd96bc82fe)
+
+- Permissions which lambda function should have
+  ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/1c4e8239-e240-46a5-b141-b10dc0a21e9c)
+
+## DynamoDb
+
+- Creating dynamoDb table (Id as primary key and we can add few more properties like Name, Age, joiningDate etc) based on our need
+  ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/952ffbc2-00c2-472b-8011-352ad1ca0404)
+
+- We are adding below from Lambda code
+  ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/1501de99-4224-4217-817a-489336d7f232)
+
+## Postman Testing
+- We could get default stage url from API Gateway dashboard
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/c26d9c16-7fd7-4042-a063-aa7a46882514)
+
+### POST CALL
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/de3fbe4f-b489-4503-a8c0-ead62482df7e)
+
+### GET call 
+![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/77d343be-3bd4-469b-bcdf-449709e6c3aa)
+
+## Readiness for AWS AMPLIFY
+
+### Create empty code commit repository
 - AWS Console -> codecommit -> Create Repository
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/068cef70-818e-4fd0-9284-47b7ceb7cf3a)
 
-## Provide codecommit permissions to current AWS user
+### Provide codecommit permissions to current AWS user
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/3aa56040-ef20-46bf-8a27-01f43499dbbc)
 
-## Create GIT credentials for IAM user to allow HTTPS connection to code commit.
+### Create GIT credentials for IAM user to allow HTTPS connection to code commit.
 Click on Current user in IAM -> Security Credentials tab -> scroll down to "**HTTPS Git credentials for AWS CodeCommit**" 
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/b5fb7aa5-9ac4-471e-bf93-7f227ceb5de2)
 
-## Clone Git repository (it will create a empty folder on local machine) 
+### Clone Git repository (it will create a empty folder on local machine) 
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/4edd4d3f-cd67-48bf-be8e-e9808e41ba57)
 
 - Commit and push all files to aws code commit repo
@@ -50,36 +156,9 @@ Once we hit deploy then AWS Amplify automatically provision infra and deploy the
   - Updated the title to **Employee Portal - Updated**
   ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/8e1e84d5-7bb9-4f85-a5f2-e4420f5df31b)
 
-
   - Commit the change
   ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/47beb2b9-d6b5-4294-8f80-fa334ffd0240)
 
   - We could see the build running and getting deployed automatically. Once done we can access website to see updated text
   ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/b8419cc8-d1dc-4cf7-9c2d-a0c75f7bfe38)
-
-************************************************
-
-## API Gateway
-- Create HTTP API or rest API (/Employee) and attach integration with Lambda function. 
-![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/8312df20-ffff-4b9f-8486-83d7506d2069)
-
-- Add routes (Get / POST / PUT / DELETE) Integrate Lambda function with API gateway
-
-![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/29da0ce5-4396-4949-875a-33df8eab052e)
-
-## Lambda Function
-
-```csharp
-```
-
-- Publish Lambda function (Make sure AWS credentials are setup on development machine)
-
-![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/786516cf-3ee4-424d-b717-93bd96bc82fe)
-
-
-## DynamoDb
-
-- Creating dynamoDb table (Id as primary key and JoiningDate as sort key. We may add few more attributes (like Name, Age etc) based on our need)
-
-![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/13f32d6f-95b5-4903-8f45-14373e859e38)
 
