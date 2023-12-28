@@ -121,7 +121,7 @@ Click on Current user in IAM -> Security Credentials tab -> scroll down to "**HT
 ### Clone Git repository (it will create a empty folder on local machine) 
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/4edd4d3f-cd67-48bf-be8e-e9808e41ba57)
 
-- Commit and push all files to aws code commit repo
+- Commit and push all files to aws code commit repo (github repo for angular sample app - https://github.com/vikas4338/angular-sample-apps)
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/60e5e91a-6743-4b90-8d28-dd363385fb8c)
 
 ## Host website (AWS Amplify)
