@@ -84,9 +84,6 @@ This website would call api gateway endpoints which would be integrated with AWS
    }
 ```
 
-- Publish Lambda function (Make sure AWS credentials are setup on development machine and also Lambda has **permission to interact with DynamoDb**)
-![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/786516cf-3ee4-424d-b717-93bd96bc82fe)
-
 - Permissions which lambda function should have
   ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/1c4e8239-e240-46a5-b141-b10dc0a21e9c)
 
