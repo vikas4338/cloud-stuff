@@ -124,7 +124,7 @@ Click on Current user in IAM -> Security Credentials tab -> scroll down to "**HT
 - Commit and push all files to aws code commit repo
 ![image](https://github.com/vikas4338/cloud-stuff/assets/13362154/60e5e91a-6743-4b90-8d28-dd363385fb8c)
 
-- github repo for angular sample app - https://github.com/vikas4338/angular-sample-apps
+- github repo for angular sample app - [https://github.com/vikas4338/angular-sample-apps](https://github.com/vikas4338/angular-sample-apps/tree/main/employee-save-retrieve-app)
 
 ## Host website (AWS Amplify)
 - Go to AWS amplify -> New App -> Host Web App
