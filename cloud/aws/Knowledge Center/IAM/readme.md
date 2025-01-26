@@ -36,4 +36,16 @@ Example of a group having multiple users.
 Permissions on the group -
 ![image](https://github.com/user-attachments/assets/69bb135b-67cb-4451-a095-3012e3d092f1)
 
+# IAM Role
+Role is an ideantity which is pretty much similar to user like it can have certain permissions to perform action but roles are not always associated to some person instead they can be assumed by anyone or anything who needs access to aws resources like...
+   1) **Temporary Credentials:** Roles provide temporary security credentials to other AWS services or users that assume them.
+   2) **Cross-Account Access:** Roles can be used to grant permissions to access resources in your AWS account from another AWS account.
+   3) **Federated Access:** Roles allow users from outside AWS (like those in your organization) to access AWS resources without needing to set up IAM users directly.
+   4) **Service Access:** Many AWS services can assume roles to perform actions on your behalf. For instance, an EC2 instance can assume a role to gain temporary access to download files from an S3 bucket.
+   5) **Security Best Practices:** Roles improve security by reducing the need for long-term AWS credentials and by providing temporary credentials with limited permissions.
 
+   For example - we can create a role for EC2 instance which may have permissions to access S3 (get/put/all actions), in that case we setup that following.  
+   ![image](https://github.com/user-attachments/assets/8dd03eb7-7c14-4768-8e64-685adf9b8c60)
+
+   Select permission s3 full access or we could create custom permissions to provide fine grain access like get/create but not delete -
+   ![image](https://github.com/user-attachments/assets/688b4c6b-42e4-4b8b-9709-0084985361cb)
