@@ -11,3 +11,11 @@ EC2 is a compute service offered by cloud which provide secure and resizable com
 4) **Spot Instances:** Take advantage of unused EC2 capacity at discounts of up to 90% compared to On-Demand prices. Best for fault-tolerant and flexible workloads1.
 
 5) **Dedicated Hosts:** Physical servers for your exclusive use, giving you more control over instance placement and allowing you to use your existing per-socket, per-core, or per-VM software licenses.
+
+# Instance types
+1) **General purpose :** These instances are having balanced CPU, memory and networking resources
+2) **Compute Optimized:** High performance processor for compute intensive workloads such as gaming, batch processing, machine learning models etc, **Examples :** C5, C6i, C7g
+3) **Memory Optimized:** Designed for workloads which requires large memory to process large datasets in memory. **Examples:** R6g, R6i etc
+4) **Storage Optimized:** High, sequential read and write access. Ideal for large databases and data warehousing. **Examples:** I3, I4i, D2, H1
+5) **Accelerated Computing:** Use hardware accelerators for specific tasks like graphics processing, machine learning, and data pattern matching. **Examples:** P3, G4ad, Inf1, F1.
+6) **High Performance Computing (HPC):** Purpose-built to offer the best performance for HPC workloads. Suitable for complex simulations and scientific modeling2. **Examples:** Hpc6a, Hpc7g
