@@ -30,10 +30,10 @@ In AWS if any service want to use another service then some IAM setup needs to b
 1) Launch EC2 instance, in advanced section -> select instance profile  
 ![image](https://github.com/user-attachments/assets/2a65162f-d5f8-46b5-82b6-730fcaeb5f8a)
 
-2) Make sure select / create key pair while launching instance as follows  
-![image](https://github.com/user-attachments/assets/03a3525c-3152-43cf-977f-f13353e0c232)
+2) Make sure select / create key pair while launching instance as follows
+   ![image](https://github.com/user-attachments/assets/819ed1a9-b92a-401a-8b8f-8ccb3f6065f3)
 
-3) Access instance using from console or any other way
+4) Access instance using from console or any other way
    ![image](https://github.com/user-attachments/assets/53bb22bb-01ac-4974-8fe5-8ab2cb8f9db4)
    
    a) Using console : click on "connect" button on instance summary section. It will open a new tab and render AWS's inbuilt shell, something like below
