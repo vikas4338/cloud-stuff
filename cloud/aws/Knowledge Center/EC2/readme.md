@@ -19,3 +19,11 @@ EC2 is a compute service offered by cloud which provide secure and resizable com
 4) **Storage Optimized:** High, sequential read and write access. Ideal for large databases and data warehousing. **Examples:** I3, I4i, D2, H1
 5) **Accelerated Computing:** Use hardware accelerators for specific tasks like graphics processing, machine learning, and data pattern matching. **Examples:** P3, G4ad, Inf1, F1.
 6) **High Performance Computing (HPC):** Purpose-built to offer the best performance for HPC workloads. Suitable for complex simulations and scientific modeling2. **Examples:** Hpc6a, Hpc7g
+
+# Create Role and assign to EC2 Instance
+In AWS if any service want to use another service then some IAM setup needs to be done which allows access to that service. For example, lets say we need to access S3 while some process is running on EC2 instance. Then we should perform following steps
+  - create a IAM role
+  - assign permissions to access S3
+  - associate IAM role with EC3 (can be done while we launch EC2 instance or later when EC2 intance is already launched)
+
+Practical example -  
