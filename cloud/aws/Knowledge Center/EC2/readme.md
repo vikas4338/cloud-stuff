@@ -40,5 +40,24 @@ In AWS if any service want to use another service then some IAM setup needs to b
    ![image](https://github.com/user-attachments/assets/0fec73b4-fc95-4f52-8ede-fc2c980f4313)
 
    b) Using MobaXterm
-   
-   
+      i) Click on the “Session” button in the upper-left corner of the MobaXterm window.
+      ii) In the “Session settings” dialog, select “SSH” as the protocol.
+      iii) the “Remote host” field, enter the public IP address or DNS name of your EC2 instance.
+      iv) In the “Specify username” field, enter the username. For Amazon Linux instances, the default username is ec2-user. For Ubuntu, it might be ubuntu, and for CentOS, probably centos.
+      v) In the “Advanced SSH settings” section, go to the “Use private key” field and select your .pem private key file.
+      vi Click “OK” to save your session settings
+
+   ![image](https://github.com/user-attachments/assets/9ca596bd-bb48-4f0b-9043-327b59629afc)
+
+   We should be able to list S3 buckets as the Role have permission to list buckets and put objects..
+
+  List Buckets -
+   ![image](https://github.com/user-attachments/assets/c050db2d-f865-43df-967c-052117ad107e)
+
+  Put Object -
+  create text file -
+  touch text.txt
+  echo "My AWS test" > text.txt
+
+  Upload file to S3 -
+  ![image](https://github.com/user-attachments/assets/432c2b8c-bd2e-4e1b-ac10-06cd62f52272)
