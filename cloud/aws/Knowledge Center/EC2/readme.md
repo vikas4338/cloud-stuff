@@ -61,3 +61,6 @@ In AWS if any service want to use another service then some IAM setup needs to b
 
   Upload file to S3 -
   ![image](https://github.com/user-attachments/assets/432c2b8c-bd2e-4e1b-ac10-06cd62f52272)
+
+  We can see the file being uploaded to s3.
+  ![image](https://github.com/user-attachments/assets/b9c28228-d5e0-4a5a-93ec-eb5f24377c11)
